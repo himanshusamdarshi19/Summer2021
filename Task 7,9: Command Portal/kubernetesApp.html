@@ -1,0 +1,131 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>kubernetesApp</title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function lw() {
+
+
+         var i = document.getElementById("in1").value
+         var idd = "0"
+         var final = " "
+
+         //creating deployment
+         if (((i.includes("deployments")) || (i.includes("deployment")) || (i.includes("deploy"))) && ((i.includes("launch")) || (i.includes("create")) || (i.includes("run")) || (i.includes("build")))) {
+            var iname = prompt("Enter image name: ")
+            var dname = prompt("Enter deployment name: ")
+            var idd = "1"
+            var final = idd + " " + iname + " " + dname
+         }
+
+         //creating pod
+
+         else if (((i.includes("pod")) || (i.includes("pods"))) && ((i.includes("launch")) || (i.includes("create")) || (i.includes("build")) || (i.includes("run")))) {
+
+            var iname = prompt("Enter image name: ")
+            var pname = prompt("Enter pod name: ")
+            var idd = "2"
+            var final = idd + " " + iname + " " + pname
+         }
+
+         //delete pod
+         else if (((i.includes("pod")) || (i.includes("pods"))) && ((i.includes("delete")) || (i.includes("remove")) || (i.includes("detach")) || (i.includes("destroy")))){
+
+            var pname = prompt("Enter pod name: ")
+            var idd = "3"
+            var final = idd + " " + pname
+         }
+
+         //delete deployment
+         else if (((i.includes("deployments")) || (i.includes("deployment")) || (i.includes("deploy"))) && ((i.includes("delete")) || (i.includes("remove")) || (i.includes("destroy")) || (i.includes("detach")))) {
+
+            var dname = prompt("Enter deployment name: ")
+            var idd = "4"
+            var final = idd + " " + dname
+         }
+
+         //expose deployment
+         else if (((i.includes("deployments")) || (i.includes("deploy")) || (i.includes("deployment"))) && ((i.includes("expose")) || (i.includes("display")) || (i.includes("display")))) {
+            var dname = prompt("Enter Deployment name: ")
+            var port_no = prompt("Enter port no. on which you want to expose your deployment: ")
+            var etype = prompt(" 1. NodePort \n 2. ClusterIP \n 3.External \n Enter the type which you want to expose ")
+            var idd = "5"
+            var final = idd + " " + dname + " " + port_no + " " + etype
+
+         }
+         //scale deployment
+         else if (((i.includes("deployments")) || (i.includes("deploy")) || (i.includes("deployment"))) && ((i.includes("scale")) || (i.includes("replica")) || (i.includes("increase")) || (i.includes("decrease")) || (i.includes("scale up")) || (i.includes("scale down")))) {
+            var dname = prompt("Enter Deployment name: ")
+            var replica = prompt("Enter no. of replication : ")
+            var idd = "6"
+            var final = idd + " " + dname + " " + replica
+
+         }
+         //list pods
+         else if (((i.includes("pods")) || (i.includes("pod"))) && ((i.includes("show")) || (i.includes("get")) || (i.includes("display")) || (i.includes("see")) || (i.includes("list")))) {
+            var idd = "7"
+            var final = idd
+
+         }
+         //list deployments
+         else if (((i.includes("deployments")) || (i.includes("deployment")) || (i.includes("deploy"))) && ((i.includes("show")) || (i.includes("see")) || (i.includes("display")) || (i.includes("get")) || (i.includes("list")))) {
+            var idd = "8"
+            var final = idd
+
+         }
+         //list svc
+         else if (((i.includes("services")) || (i.includes("services")) || (i.includes("svc"))) && ((i.includes("show")) || (i.includes("see")) || (i.includes("display")) || (i.includes("get")) || (i.includes("list")))) {
+            var idd = "9"
+            var final = idd
+
+         }
+         else if (i.includes("Thank you")){
+            var idd = "10"
+            var final = idd
+
+         }
+         else {
+            var idd = "404"
+            var final = idd
+
+         }
+
+
+
+
+         var xhr = new XMLHttpRequest();
+
+         xhr.open("GET", "http://192.168.0.103/cgi-bin/kube.py?x=" + final, true);
+
+         xhr.send()
+
+         //output from above url
+         xhr.onload = function () {
+            var output = xhr.responseText;
+
+            document.getElementById("d1").innerHTML = output;
+         }
+      }
+   </script>
+	</script>
+	<style type="text/css"></style>
+</head>
+<body style="background: darkblue;">
+	<h1 style="color:yellowgreen;"><center>Kubernetes WebApp</center></h1>
+	<h2 style="padding-left:25%;color: indianred;">Enter your requirement <input id="in1" /> <button id="d2" onclick="lw()">Enter</button></h2>
+      <pre>
+		<div class="col" style="height: 40%;background: black;overflow-x: hidden;overflow-y: auto;">
+			<p id="d1" style="color: white;padding:0%;padding-left:10%;">[root@localhost ~]# </p>
+		</div>
+	  </pre>	
+</body>
+</html>

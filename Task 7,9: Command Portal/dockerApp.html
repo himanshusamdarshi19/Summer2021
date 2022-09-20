@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Docker WebApp</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+        function docker() {
+            var i = document.getElementById("inp").value
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://192.168.43.142/cgi-bin/docker.py?x=" + i, true);
+            xhr.send();
+            xhr.onload = function() {
+                var output = xhr.responseText;
+                document.getElementById("out").innerHTML = "[root@localhost ~]# " + i + '\n' + output;
+            }
+            document.getElementById("inp").value = "";
+        }
+
+        function autoType() {
+            document.getElementById("out").innerHTML = "[root@localhost ~]# " + document.getElementById("input").value;
+        }
+    </script>
+
+</head>
+
+<body style="background:skyblue;">
+    <h1 style="color:darkblue;">
+        <center>Docker WebApp</center>
+    </h1>
+    <div class="row" style="height: 1000px;">
+        <div class="col" style="height:200px;background: aliceblue;">
+            <p style="padding-left: 30%;padding-top: 100px;">
+                Enter the docker command: <input id="inp" name="command" placeholder="Enter Your Commands" onkeyup="autoType()" style="width: 300px;;">
+                <button onclick="docker()">Click</button>
+            </p>
+        </div>
+        <pre><div class="scroll" style="height:300px;background: black;overflow-x: hidden;overflow-y: auto;">
+            <p id="out" style="color: white;padding:0%;padding-left:10%;">[root@localhost ~]# </p>
+        </div></pre>
+
+        <div class="col" style="height:500px;background: blue;"></div>
+    </div>
+</body>
+
+</html>

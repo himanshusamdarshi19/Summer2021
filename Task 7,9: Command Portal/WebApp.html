@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebApp</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        img {
+            height: 250px;
+            width: 250px;
+        }
+        
+        section {
+            height: 500px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        
+        div#left {
+            width: 50%;
+        }
+        
+        div#right {
+            width: 50%;
+        }
+        
+        #box {
+            background-color: lightgrey;
+            width: 46%;
+            border: 15px solid green;
+            padding: 30px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body style="background: skyblue;">
+    <header class="fixed-top" style="color: blueviolet;">
+        <h1 style="background:yellow;">
+            <center>Welcome To My Command Portal</center>
+        </h1>
+    </header>
+    <section style="height:50px"></section>
+    <div class="row" style="background: orangered;height: 50%;">
+        <div id="left" class="col-sm-6">
+            <p style="text-align: center;">
+                <a class="btn" href="dockerApp.html">
+                    <img src="docker_img.gif" alt="docker_img">
+                </a>
+                <a href="dockerApp.html">
+                    <h2><button>Docker WebApp</button></h2>
+                </a>
+            </p>
+        </div>
+        <div id="right" class="col-sm-6">
+            <p style="text-align: center;">
+                <a class="btn" href="http://google.com/">
+                    <img src="kubernetes_gif.gif" alt="kubernetes_gif">
+                </a>
+                <a href="http://google.com/">
+                    <h2><button onclick="showContent()">Kubernetes WebApp</button></h2>
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-5" id="box">
+            <blockquote>
+                <header>
+                    <h3>Task Description:</h3>
+                </header> Create a Web Application for Docker (one of the great Containerization Tool which provides the user Platform as a Service (PaaS)) by showing your own creativity and UI/UX designing skills to make the webportal user friendly.<br>This app
+                will help the user to run all the docker commands like:<br> 1.docker images<br> 2.docker ps<br> 3.docker run<br> 4.docker rm -f<br> 5.docker exec<br> 6. add more if you want.(Optional)</blockquote>
+        </div>
+
+        <div class="col-sm-5" id="box">
+            <blockquote>
+                <header>
+                    <h3>Task Description:</h3>
+                </header>
+                Integrate Kubernetes commands that can be run through webUI created by you.<br>Create webUI page as such that using normal English conversation your all commands can run in background. Example - when we write 'run deployment using httpd
+                image' then it run complete deployment command in backend. Feature necessary -<br> 👉 It can launch pods with specific name given by user.<br> 👉 Run deployment using image and name given by user.<br> 👉 Expose services on given user input
+                port number.<br> 👉 Scale the replica according to user need.<br> 👉 Delete complete environment created.<br> 👉 Delete specific resources given by user.<br> 👉 Extra features related to k8s ( Optional)<br> Note - There should be webUI
+                based menu display so that user can get to know what your webapp can do.
+            </blockquote>
+        </div>
+
+    </div>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
